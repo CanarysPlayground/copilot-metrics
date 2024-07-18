@@ -32,10 +32,10 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Docker image
-      run: docker build -t ghcr.io/CanarysPlayground/copilot-metrics .
+      run: docker build -t ghcr.io/canarysPlayground/copilot-metrics .
 
     - name: Run Docker container
-      run: docker run -d -p 8080:80 ghcr.io/$CanarysPlayground/copilot-metrics
+      run: docker run -d -p 8080:80 ghcr.io/$canarysPlayground/copilot-metrics
 
     - name: Wait for container to be ready
       run: sleep 10
