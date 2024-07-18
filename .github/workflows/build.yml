@@ -29,8 +29,8 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}:${{ github.sha }}
-          ghcr.io/${{ github.repository }}:latest
+         ghcr.io/canarysplayground/copilot-metrics:${{ github.sha }}
+         ghcr.io/canarysplayground/copilot-metrics:latest
 
     - name: Create .nojekyll file to bypass Jekyll processing
       run: echo > .nojekyll
