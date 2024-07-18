@@ -24,21 +24,24 @@ jobs:
       run: |
           ls
           pwd
+          docker run -it my-app-container /bin/bash
+          ls
+          pwd
 
-    - name: Copy built files from container
-      run: |
-        docker cp my-app-container:/usr/share/nginx/html ./public
+    # - name: Copy built files from container
+    #   run: |
+    #     docker cp my-app-container:/usr/share/nginx/html ./public
 
-    - name: Remove container
-      run: |
-        docker rm my-app-container
+    # - name: Remove container
+    #   run: |
+    #     docker rm my-app-container
 
-    - name: Create .nojekyll file to bypass Jekyll processing
-      run: echo > ./public/.nojekyll
+    # - name: Create .nojekyll file to bypass Jekyll processing
+    #   run: echo > ./public/.nojekyll
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-        publish_branch: gh-pages
+    # - name: Deploy to GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./public
+    #     publish_branch: gh-pages
