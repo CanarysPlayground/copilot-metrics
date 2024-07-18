@@ -15,11 +15,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t my-app .
+        docker build -t copilot-metrics-viewer .
 
     - name: Create container from image
       run: |
-        docker create --name my-app-container my-app
+        docker create --name my-app-container copilot-metrics-viewer
 
     - name: Copy built files from container
       run: |
