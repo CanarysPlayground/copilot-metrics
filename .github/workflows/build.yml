@@ -40,7 +40,7 @@ jobs:
         echo "<html>" > index.html
         echo "<body>" >> index.html
         echo "<h1>Docker Image Published!</h1>" >> index.html
-        echo "<p>Docker Image: ghcr.io/${{ github.repository }}:latest</p>" >> index.html
+        echo "<p>Docker Image: ghcr.io/canarysplayground/copilot-metrics:latest</p>" >> index.html
         echo "</body>" >> index.html
         echo "</html>" >> index.html
 
