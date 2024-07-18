@@ -1,0 +1,40 @@
+name: Build, Extract, and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: |
+        docker build -t my-app .
+
+    - name: Create container from image
+      run: |
+        docker create --name my-app-container my-app
+
+    - name: Copy built files from container
+      run: |
+        docker cp my-app-container:/usr/share/nginx/html ./public
+
+    - name: Remove container
+      run: |
+        docker rm my-app-container
+
+    - name: Create .nojekyll file to bypass Jekyll processing
+      run: echo > ./public/.nojekyll
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        publish_branch: gh-pages
