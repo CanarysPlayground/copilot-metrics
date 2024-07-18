@@ -20,6 +20,10 @@ jobs:
     - name: Create container from image
       run: |
         docker create --name my-app-container copilot-metrics-viewer
+    - name: list files
+      run: |
+          ls
+          pwd
 
     - name: Copy built files from container
       run: |
