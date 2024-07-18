@@ -35,8 +35,8 @@ jobs:
       run: docker build -t ghcr.io/canarysplayground/copilot-metrics .
 
     - name: Run Docker container
-      run: docker run -d -p 8080:80 ghcr.io/$canarysplayground/copilot-metrics
-
+      run: docker run -d -p 8080:80 ghcr.io/${{ github.repository_owner }}/copilot-metrics
+  
     - name: Wait for container to be ready
       run: sleep 10
 
